@@ -1,9 +1,12 @@
 {
     "required": true,
     "minVersion": "0.8",
-    "package": "turniplabs.examplemod.mixin",
+    "package": "jamdoggie.swaymod.mixin",
     "compatibilityLevel": "JAVA_8",
     "mixins": [
+      "WorldRendererMixin",
+      "ItemRendererMixin",
+      "EntityPlayerSPMixin"
     ],
     "client": [
     ],
