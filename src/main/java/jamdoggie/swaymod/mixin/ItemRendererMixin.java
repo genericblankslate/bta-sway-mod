@@ -1,5 +1,6 @@
 package jamdoggie.swaymod.mixin;
 
+import jamdoggie.swaymod.SwayMod;
 import jamdoggie.swaymod.mixininterfaces.IPlayerMixin;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.EntityPlayerSP;
@@ -23,10 +24,18 @@ public class ItemRendererMixin
 		EntityPlayerSP entityPlayer = this.mc.thePlayer;
 		IPlayerMixin playerMixin = (IPlayerMixin)entityPlayer;
 
-		float swayPitch = playerMixin._getPrevRenderArmPitch() + (playerMixin._getRenderArmPitch() - playerMixin._getPrevRenderArmPitch()) * partialTick;
-		float swayYaw = playerMixin._getPrevRenderArmYaw() + (playerMixin._getRenderArmYaw() - playerMixin._getPrevRenderArmYaw()) * partialTick;
+		if (SwayMod.options == null)
+			return;
 
-		GL11.glRotatef((entityPlayer.xRot - swayPitch) * 0.1f, 1.0f, 0.0f, 0.0f);
-		GL11.glRotatef((entityPlayer.yRot - swayYaw) * 0.1f, 0.0f, 1.0f, 0.0f);
+		if (SwayMod.options.enableSway().value)
+		{
+			float multiplier = (SwayMod.options.swayMultiplier().value * 5f);
+
+			float swayPitch = playerMixin._getPrevRenderArmPitch() + (playerMixin._getRenderArmPitch() - playerMixin._getPrevRenderArmPitch()) * partialTick;
+			float swayYaw = playerMixin._getPrevRenderArmYaw() + (playerMixin._getRenderArmYaw() - playerMixin._getPrevRenderArmYaw()) * partialTick;
+
+			GL11.glRotatef((entityPlayer.xRot - swayPitch) * (0.1f * multiplier), 1.0f, 0.0f, 0.0f);
+			GL11.glRotatef((entityPlayer.yRot - swayYaw) * (0.1f * multiplier), 0.0f, 1.0f, 0.0f);
+		}
 	}
 }

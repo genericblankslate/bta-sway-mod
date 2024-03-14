@@ -72,6 +72,10 @@ repositories {
 		}
 		metadataSources { artifact() }
 	}
+	maven {
+		name = 'JitPack'
+		url = 'https://jitpack.io/'
+	}
 }
 
 dependencies {
@@ -98,6 +102,8 @@ dependencies {
 	implementation("org.apache.logging.log4j:log4j-1.2-api:${log4jVersion}")
 
 	include(implementation("org.apache.commons:commons-lang3:3.12.0"))
+
+	modImplementation "com.github.Turnip-Labs:ModMenu:2.0.2"
 }
 
 java {

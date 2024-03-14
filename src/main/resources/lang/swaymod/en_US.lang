@@ -1,0 +1,4 @@
+swaymod.options.title=Better With Sway
+options.swaymod.options.enableSway=Enable First Person Arm Sway
+options.swaymod.options.enableVerticalBobSway=Enable Vertical Arm Bob
+options.swaymod.options.swayMultiplier=Arm Sway Intensity

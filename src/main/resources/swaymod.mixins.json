@@ -4,11 +4,14 @@
     "package": "jamdoggie.swaymod.mixin",
     "compatibilityLevel": "JAVA_8",
     "mixins": [
-      "WorldRendererMixin",
-      "ItemRendererMixin",
-      "EntityPlayerSPMixin"
+
     ],
     "client": [
+      "WorldRendererMixin",
+      "ItemRendererMixin",
+      "EntityPlayerSPMixin",
+      "SwaySettingsMixin",
+      "MinecraftMixin"
     ],
     "injectors": {
         "defaultRequire": 1

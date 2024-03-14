@@ -29,6 +29,12 @@
 		],
 		"recipesReady": [
 			"jamdoggie.swaymod.SwayMod"
+		],
+		"modmenu": [
+			"jamdoggie.swaymod.SwayModMenuEntry"
+		],
+		"afterGameStart": [
+			"jamdoggie.swaymod.options.GuiOptionsPageSway"
 		]
 	},
   "mixins": [
@@ -36,8 +42,12 @@
   ],
 
   "depends": {
-    "fabricloader": ">=0.13.3"
+    "fabricloader": ">=0.13.3",
+		"modmenu": ">=2.0.0"
   },
   "suggests": {
-  }
+  },
+	"custom": {
+		"modmenu:clientsideOnly": true
+	}
 }
