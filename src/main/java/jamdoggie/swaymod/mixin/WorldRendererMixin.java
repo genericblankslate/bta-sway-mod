@@ -28,11 +28,11 @@ public class WorldRendererMixin
 			shift = At.Shift.AFTER,
 			ordinal = 1),
 		locals = LocalCapture.CAPTURE_FAILHARD)
-	private void renderHand(float partialTick, CallbackInfo ci, EntityPlayer entityplayer, float f1, float f2, float f3, float f4)
+	private void renderHand(float partialTick, CallbackInfo ci, EntityPlayer player, float walkDist, float cameraVel, float cameraPitch)
 	{
 		if (SwayMod.options != null && SwayMod.options.enableVerticalBobSway().value)
 		{
-			GL11.glRotatef(f4, 1.0F, 0.0F, 0.0F);
+			GL11.glRotatef(cameraPitch, 1.0F, 0.0F, 0.0F);
 		}
 	}
 }

@@ -31,4 +31,9 @@ public class SwayMod implements ModInitializer, GameStartEntrypoint, RecipeEntry
 	public void onRecipesReady() {
 
 	}
+
+	@Override
+	public void initNamespaces() {
+		
+	}
 }

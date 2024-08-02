@@ -19,11 +19,16 @@ public class ItemRendererMixin
 	@Shadow
 	private Minecraft mc;
 
-	@Inject(method = "renderItemInFirstPerson(F)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/core/world/World;getLightBrightness(III)F"))
+	@Inject(method = "renderItemInFirstPerson(F)V", 
+		at = @At(
+			value = "INVOKE",
+			target = "Lorg/lwjgl/opengl/GL11;glPushMatrix()V",
+			shift = At.Shift.AFTER,
+			ordinal = 1))
 	private void renderItemInFirstPerson(float partialTick, CallbackInfo ci)
 	{
-		EntityPlayerSP entityPlayer = this.mc.thePlayer;
-		IPlayerMixin playerMixin = (IPlayerMixin)entityPlayer;
+		EntityPlayerSP player = this.mc.thePlayer;
+		IPlayerMixin playerMixin = (IPlayerMixin)player;
 
 		if (SwayMod.options == null)
 			return;
@@ -38,8 +43,8 @@ public class ItemRendererMixin
 			float swayPitch = playerMixin._getPrevRenderArmPitch() + swayAmountPitch * partialTick;
 			float swayYaw = playerMixin._getPrevRenderArmYaw() + swayAmountYaw * partialTick;
 
-			GL11.glRotatef((entityPlayer.xRot - swayPitch) * (0.1f * multiplier), 1.0f, 0.0f, 0.0f);
-			GL11.glRotatef((entityPlayer.yRot - swayYaw) * (0.1f * multiplier), 0.0f, 1.0f, 0.0f);
+			GL11.glRotatef((player.xRot - swayPitch) * (0.1f * multiplier), 1.0f, 0.0f, 0.0f);
+			GL11.glRotatef((player.yRot - swayYaw) * (0.1f * multiplier), 0.0f, 1.0f, 0.0f);
 
 
 		}
